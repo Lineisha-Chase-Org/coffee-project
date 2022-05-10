@@ -22,8 +22,15 @@ function updateCoffees(e) {
     e.preventDefault(); // don't submit the form, we just want to update the data
     let selectedRoast = roastSelection.value;
     let filteredCoffees = [];
+    if (selectedRoast === "all") {
+        for (let i = 0; i < coffees.length; i++) {
+            if (coffees[i].name.toLowerCase().includes(txtInput.toLowerCase())) {
+                filteredCoffees.push(coffees[i]);
+            }
+        }
+    }
     coffees.forEach(function (coffee) {
-        if (coffee.roast === selectedRoast) {
+        if (coffee.roast === selectedRoast && coffee.name.toLowerCase().includes(txtInput.toLowerCase())) {
             filteredCoffees.push(coffee);
         }
     });
@@ -61,24 +68,7 @@ submitButton1.addEventListener('click', updateCoffees);
  */
 
 let txtInput = "";
-document.getElementById("userInput").addEventListener("change", function (event) {
+document.getElementById("userInput1").addEventListener("change", function (event) {
     txtInput = event.target.value;
     console.log(txtInput);
-})
-    let filteredCoffees = [];
-    for(let i = 0;i < coffees.length;i++){
-        // if(document.querySelector('#roast-selection').value === "all" && coffees[i].name.toLowerCase().includes(txtInput)){
-        // filteredCoffees.push(coffees[i]);
-        // }
-        if(coffees[i].name.toLowerCase().includes(txtInput) && coffees[i].roast === document.querySelector('#roast-selection').value){
-            filteredCoffees.push(coffees[i]);
-        }
-    }
-    tbody.innerHTML = renderCoffees(filteredCoffees);
-
-
-// <input type="text" id="field>
-//     <div id "suggestions" style="cursor: pointer"></div>
-// var terms =[];
-//     for ( var name in window)
-//         terms.push (name);
+});
