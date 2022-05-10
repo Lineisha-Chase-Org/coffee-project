@@ -59,12 +59,11 @@ let tbody = document.querySelector('#coffees');
 let submitButton1 = document.querySelector('#submit1');
 let roastSelection = document.querySelector('#roast-selection');
 
-tbody.innerHTML = renderCoffees(coffees);
 submitButton1.addEventListener('click', updateCoffees);
 
+tbody.innerHTML = renderCoffees(coffees);
 
 let txtInput = "";
-document.getElementById("userInput1").addEventListener("change", function (event) {
+document.getElementById("userInput1").addEventListener("keyup", function (event) {
     txtInput = event.target.value;
-    console.log(txtInput);
 });
