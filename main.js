@@ -49,19 +49,34 @@ let coffees = [
 ];
 
 let tbody = document.querySelector('#coffees');
-let submitButton = document.querySelector('#submit');
+let submitButton1 = document.querySelector('#submit1');
 let roastSelection = document.querySelector('#roast-selection');
 
 tbody.innerHTML = renderCoffees(coffees);
 
-submitButton.addEventListener('click', updateCoffees);
+submitButton1.addEventListener('click', updateCoffees);
 
-// let txtInput= "";
-//     document.getElementById("userInput")
-// .addEventListener("change", function (user){
-// txtInput = user.target.value;
-// console.log(txtInput);
-// })
+/**
+ * All our code below this line =============================================
+ */
+
+let txtInput = "";
+document.getElementById("userInput").addEventListener("change", function (event) {
+    txtInput = event.target.value;
+    console.log(txtInput);
+})
+    let filteredCoffees = [];
+    for(let i = 0;i < coffees.length;i++){
+        // if(document.querySelector('#roast-selection').value === "all" && coffees[i].name.toLowerCase().includes(txtInput)){
+        // filteredCoffees.push(coffees[i]);
+        // }
+        if(coffees[i].name.toLowerCase().includes(txtInput) && coffees[i].roast === document.querySelector('#roast-selection').value){
+            filteredCoffees.push(coffees[i]);
+        }
+    }
+    tbody.innerHTML = renderCoffees(filteredCoffees);
+
+
 // <input type="text" id="field>
 //     <div id "suggestions" style="cursor: pointer"></div>
 // var terms =[];
