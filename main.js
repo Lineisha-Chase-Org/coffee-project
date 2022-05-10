@@ -55,3 +55,15 @@ let roastSelection = document.querySelector('#roast-selection');
 tbody.innerHTML = renderCoffees(coffees);
 
 submitButton.addEventListener('click', updateCoffees);
+
+// let txtInput= "";
+//     document.getElementById("userInput")
+// .addEventListener("change", function (user){
+// txtInput = user.target.value;
+// console.log(txtInput);
+// })
+// <input type="text" id="field>
+//     <div id "suggestions" style="cursor: pointer"></div>
+// var terms =[];
+//     for ( var name in window)
+//         terms.push (name);
