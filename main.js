@@ -60,12 +60,8 @@ let submitButton1 = document.querySelector('#submit1');
 let roastSelection = document.querySelector('#roast-selection');
 
 tbody.innerHTML = renderCoffees(coffees);
-
 submitButton1.addEventListener('click', updateCoffees);
 
-/**
- * All our code below this line =============================================
- */
 
 let txtInput = "";
 document.getElementById("userInput1").addEventListener("change", function (event) {
