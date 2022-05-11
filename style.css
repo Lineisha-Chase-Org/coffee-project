@@ -1,9 +1,25 @@
-table {
-    border-collapse: collapse;
-    margin: 15px 0;
+body {
+    background-color: lightcoral;
 }
 
-td, th {
-    border: 1px solid black;
-    padding: 5px 10px;
+#coffees {
+}
+
+#name{
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 50px;
+}
+
+h6 {
+    color: gray;
+}
+
+.amatic {
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 50px;
+}
+
+.small-amatic{
+    font-family: 'Amatic SC', cursive, sans-serif;
+    font-size: 35px;
 }

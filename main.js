@@ -2,8 +2,8 @@
 
 function renderCoffee(coffee) {
     let html = '<section class="coffee">';
-    html += '<div>' + coffee.name + '</div>';
-    html += '<div>' + coffee.roast + '</div>';
+    html += '<div><h4>' + coffee.name + '</h4></div>';
+    html += '<div><h6>' + coffee.roast + '</h6></div>';
     html += '</section>';
     return html;
 }
@@ -72,7 +72,7 @@ let tbody = document.querySelector('#coffees');
 tbody.innerHTML = renderCoffees(coffees);
 
 let submitButton1 = document.querySelector('#submit1');
-let submitButton2 = document.querySelector("#submit2")
+let submitButton2 = document.querySelector("#submit2");
 submitButton1.addEventListener('click', updateCoffees);
 submitButton2.addEventListener('click', addCoffee);
 
@@ -81,3 +81,8 @@ let roastSelection = document.querySelector('#roast-selection');
 
 let newRoast = document.querySelector("#add-roast");
 let newCoffee = document.getElementById("userInput2");
+
+let searchInput = document.getElementById("userInput1");
+searchInput.addEventListener("keyup", updateCoffees);
+
+roastSelection.addEventListener("change", updateCoffees);
