@@ -2,17 +2,15 @@
 
 function renderCoffee(coffee) {
     let html = '<section class="coffee">';
-    html += '<div>' + coffee.id + '</div>';
     html += '<div>' + coffee.name + '</div>';
     html += '<div>' + coffee.roast + '</div>';
     html += '</section>';
-
     return html;
 }
 
 function renderCoffees(coffees) {
     let html = '';
-    for (let i = coffees.length - 1; i >= 0; i--) {
+    for (let i = 0; i < coffees.length; i++) {
         html += renderCoffee(coffees[i]);
     }
     return html;
@@ -24,13 +22,13 @@ function updateCoffees(e) {
     let filteredCoffees = [];
     if (selectedRoast === "all") {
         for (let i = 0; i < coffees.length; i++) {
-            if (coffees[i].name.toLowerCase().includes(txtInput.toLowerCase())) {
+            if (coffees[i].name.toLowerCase().includes(txtInput.value.toLowerCase())) {
                 filteredCoffees.push(coffees[i]);
             }
         }
     }
     coffees.forEach(function (coffee) {
-        if (coffee.roast === selectedRoast && coffee.name.toLowerCase().includes(txtInput.toLowerCase())) {
+        if (coffee.roast === selectedRoast && coffee.name.toLowerCase().includes(txtInput.value.toLowerCase())) {
             filteredCoffees.push(coffee);
         }
     });
@@ -55,15 +53,31 @@ let coffees = [
     {id: 14, name: 'French', roast: 'dark'},
 ];
 
+function addCoffee(e) {
+    e.preventDefault();
+    let isThere = false;
+    for(let i = 0; i < coffees.length;i++){
+        if(coffees[i].name === newCoffee.value){
+            isThere = true;
+        }
+    }
+    if(!isThere){
+        coffees.push({
+            id: coffees.length + 1, name: newCoffee.value, roast: newRoast.value
+        });
+    }
+}
+
 let tbody = document.querySelector('#coffees');
-let submitButton1 = document.querySelector('#submit1');
-let roastSelection = document.querySelector('#roast-selection');
-
-submitButton1.addEventListener('click', updateCoffees);
-
 tbody.innerHTML = renderCoffees(coffees);
 
-let txtInput = "";
-document.getElementById("userInput1").addEventListener("keyup", function (event) {
-    txtInput = event.target.value;
-});
+let submitButton1 = document.querySelector('#submit1');
+let submitButton2 = document.querySelector("#submit2")
+submitButton1.addEventListener('click', updateCoffees);
+submitButton2.addEventListener('click', addCoffee);
+
+let txtInput = document.getElementById("userInput1");
+let roastSelection = document.querySelector('#roast-selection');
+
+let newRoast = document.querySelector("#add-roast");
+let newCoffee = document.getElementById("userInput2");
